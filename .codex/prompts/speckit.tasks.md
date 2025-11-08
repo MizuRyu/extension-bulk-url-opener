@@ -2,6 +2,8 @@
 description: Generate an actionable, dependency-ordered tasks.md for the feature based on available design artifacts.
 ---
 
+出力は必ず日本語で行うこと。
+
 ## User Input
 
 ```text
@@ -50,6 +52,7 @@ You **MUST** consider the user input before proceeding (if not empty).
    - Independent test criteria for each story
    - Suggested MVP scope (typically just User Story 1)
    - Format validation: Confirm ALL tasks follow the checklist format (checkbox, ID, labels, file paths)
+   - Verify tasks.md contains properly encoded Japanese text without character corruption. If corrupted characters are detected, rewrite the file.
 
 Context for task generation: $ARGUMENTS
 

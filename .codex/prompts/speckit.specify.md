@@ -131,6 +131,8 @@ Given that feature description, do this:
       ```
 
    b. **Run Validation Check**: Review the spec against each checklist item:
+      - 出力は必ず日本語で行うこと。
+      - SPEC_FILE を含む、生成された必須成果物がすべて日本語として正しくエンコードされているか確認すること。文字化けが検出された場合はそのファイルを書き直すこと。
       - For each item, determine if it passes or fails
       - Document specific issues found (quote relevant spec sections)
 

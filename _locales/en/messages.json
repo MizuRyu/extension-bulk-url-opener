@@ -1,0 +1,8 @@
+{
+  "extDescription": {
+    "message": "Paste URLs separated by newlines or commas and open them all at once in new tabs."
+  },
+  "extLongDescription": {
+    "message": "[Overview]\nThis Chrome extension opens many URLs at once. Paste text that contains URLs separated by newlines or commas, then run the batch to create one tab per URL.\n\n[Highlights]\n- Minimal interface with a single textbox and run button\n- Accepts both newline and comma delimiters\n- Skips blank lines and invalid inputs automatically\n- Shows instant feedback inside the popup for success or errors\n\n[How to use]\n1. Click the extension icon in the browser toolbar\n2. Paste one or more URLs, either line-by-line or comma separated\n3. Press the “Open URLs” button and each URL opens in a new tab\n\n[Limitations]\n- Subject to Chrome's tab limits and each site’s own restrictions\n- Only http/https URLs are opened\n- Does not provide background tab management or scheduling"
+  }
+}

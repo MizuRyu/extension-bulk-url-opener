@@ -77,5 +77,7 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 ## Key rules
 
+- 出力は必ず日本語で行うこと。
+- 生成した全ての成果物が日本語として正しくエンコードされているか確認すること。文字化けが見つかった場合はそのファイルを書き直すこと。
 - Use absolute paths
 - ERROR on gate failures or unresolved clarifications
