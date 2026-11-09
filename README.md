@@ -1,62 +1,68 @@
+<p align="center">
+  <img src="images/icon.png" width="128" alt="Bulk URL Opener のアイコン">
+</p>
+
 # Bulk URL Opener
-> ⚠️ **Note:** This Chrome Extension is currently under review
+
+[English](README.en.md)
+
+Bulk URL Opener は、貼り付けた複数の URL を、まとめて新しいタブで開く Chrome 拡張です。
+
+改行かカンマで区切った URL を、ボタン 1 つでバックグラウンドのタブへ順に開きます。表計算やスクリプトを使わずに、多くのページを一度に確かめたいときに使います。
+
+## 特徴
+
+- **改行とカンマの両方で区切れる。** 空行と URL でない行は飛ばします。
+- **http と https だけを開く。** `javascript:` などのスキームは開きません。スキームを省いた URL には `https://` を付けます。
+- **開く件数が先に分かる。** 入力欄の横に、実際に開く URL の件数を表示します。
+- **1 件ずつ順に開く。** ブラウザに一度に負荷をかけないよう、タブを 1 件ずつ作ります。一度に開くのは 30 件までを目安として表示します（上限ではありません）。
+- **外へ何も送らない。** 権限は `tabs` だけで、計測も通信もしません。
+- **日本語と英語で表示する。** ブラウザの言語に合わせて切り替えます。
+
+## 画面例
 
 <p align="center">
-  <img src="images/icon.png" alt="Bulk URL Opener Icon" width="120" />
+  <img src="images/bulk.png" alt="URL を 5 件貼り付けたポップアップの画面" width="520">
 </p>
 
-A **Google Chrome Extension** that opens every valid URL in the clipboard-sized list you paste. It is a focused companion for QA engineers, SEOs, and researchers who need to launch many pages in one shot without spreadsheets or scripts.
+## 動作環境
 
----
+| 必要なもの | 用途 |
+| --- | --- |
+| Google Chrome（Manifest V3 に対応した版） | 拡張の実行 |
 
-## 📌 What it does
+## インストール
 
-Paste URLs separated by newlines or commas and click one button—the extension validates each entry, normalizes missing schemes, and creates background tabs sequentially. The popup mirrors the browser language (English or Japanese) and shows a live counter so you always know how many URLs are about to open.
+ソースから読み込みます。
 
----
+1. このリポジトリを clone するか、ZIP で取得して展開します。
+2. `chrome://extensions` で「デベロッパー モード」をオンにします。
+3. 「パッケージ化されていない拡張機能を読み込む」で、取得したフォルダを選びます。
 
-## ✨ Key Features
+## 使い方
 
-- Accepts multiline or comma-separated input and ignores blank lines automatically
-- HTTP/HTTPS-only validation prevents `javascript:` and other unsafe schemes from opening
-- Live URL counter next to the label counts only entries that parse as real links
-- Auto-adds `https://` when you omit a scheme, plus inline error feedback when parsing fails
-- Sequential tab creation smooths out spikes—recommended batch size (30) is shown as a hint
-- Works fully client-side with the minimal `tabs` permission; no analytics or network calls
+1. ツールバーの拡張機能のアイコンをクリックします。
+2. URL を改行かカンマで区切って貼り付けます。
+3. 「まとめて開く」を押すと、URL ごとに新しいタブがバックグラウンドで開きます。
 
----
+| こんなとき | こうする |
+| --- | --- |
+| 大量の URL を開きたい | 30 件前後ずつに分けて開く。開く先のサイトの制限に掛かりにくくなる |
+| 貼った URL が件数に数えられない | ドメインか IP アドレスを含む http / https の URL か確かめる |
 
-## 🖼️ Example
+## できないこと
 
-<p align="center">
-  <img src="images/bulk.png" alt="Bulk URL Opener popup screenshot" width="520" />
-</p>
+- 同じ URL をまとめません。重複した URL は、その数だけタブを開きます。
+- `localhost` のような、ドメインの無い名前は URL として扱いません。
+- 開く先のサイトの制限で表示に失敗したページは、検知できません。
+- 予約や定期的に開く機能はありません。
 
-The popup keeps the UI lightweight: status messages, the live counter, and the recommended batch hint appear only when needed.
+## 開発
 
----
+ビルドの手順はありません。ファイルを直したら、`chrome://extensions` で拡張を再読み込みします。
 
-## 🚀 How to Use
+背景と UX の判断は [設計](docs/design.md)、手動で確かめる手順は [テストガイド](docs/TESTING.md) にあります。
 
-1. Enable **Developer mode** in `chrome://extensions`.
-2. Click **Load unpacked** and select the `extension-bulk-url-opener` folder.
-3. Pin the extension icon (optional) and click it from the toolbar.
-4. Paste URLs separated by line breaks or commas.
-5. Press **Open URLs**. Tabs open sequentially in the background to avoid sudden bursts.
+## ライセンス
 
-Tip: keeping batches near 30 URLs helps prevent rate limits from the destination sites.
-
----
-
-## ⚠️ Limitations
-
-- Works only inside Chrome; no background scheduling or tab deduplication.
-- If you exceed site-specific rate limits, the extension cannot detect or mitigate the failures.
-- IME conversion and multiline rich text paste behaviors depend on the host OS/Chrome channel.
-
----
-
-## 📚 References
-
-- `docs/design.md` – product background and UX decisions (Japanese).
-- `docs/TESTING.md` – edge cases and manual verification steps (Japanese).
+[MIT](LICENSE)
